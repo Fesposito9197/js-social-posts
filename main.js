@@ -58,13 +58,11 @@ const posts = [
 const postContainer = document.querySelector('.posts-list')
 
 // ciclo sull'array di oggetti
+let userClick = 0
 for ( let i = 0; i < posts.length ; i++ ){
     // console.log(posts[i])
-    
     const socialPosts = posts[i];
     const {author} = socialPosts
-    
-    
     // creo un template nel mio html e lo salvo all'interno di una variabile
     const postItem = document.getElementById('post-template').content.cloneNode(true);
     postItem.querySelector('.post-meta__author').innerHTML = author.name;
@@ -73,4 +71,16 @@ for ( let i = 0; i < posts.length ; i++ ){
     postItem.getElementById('post__img').src = socialPosts.media;
     postItem.querySelector('.js-likes-counter').innerHTML = socialPosts.likes;
     postContainer.append(postItem)
-}
+    const likeButton = postItem.querySelector(".js-like-button")
+    likeButton.addEventListener('click' , function (){
+        
+    })
+   
+}    
+
+
+
+    
+
+    
+    
