@@ -55,3 +55,22 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+const postContainer = document.querySelector('.posts-list')
+
+// ciclo sull'array di oggetti
+for ( let i = 0; i < posts.length ; i++ ){
+    // console.log(posts[i])
+    
+    const socialPosts = posts[i];
+    const {author} = socialPosts
+    
+    
+    // creo un template nel mio html e lo salvo all'interno di una variabile
+    const postItem = document.getElementById('post-template').content.cloneNode(true);
+    postItem.querySelector('.post-meta__author').innerHTML = author.name;
+    postItem.querySelector('.profile-pic').src = author.image;
+    postItem.querySelector(".post-meta__time").innerHTML = socialPosts.created;
+    postItem.getElementById('post__img').src = socialPosts.media;
+    postItem.querySelector('.js-likes-counter').innerHTML = socialPosts.likes;
+    postContainer.append(postItem)
+}
