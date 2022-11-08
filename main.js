@@ -69,13 +69,19 @@ for ( let i = 0; i < posts.length ; i++ ){
     postItem.querySelector('.profile-pic').src = author.image;
     postItem.querySelector(".post-meta__time").innerHTML = socialPosts.created;
     postItem.getElementById('post__img').src = socialPosts.media;
-    postItem.querySelector('.js-likes-counter').innerHTML = socialPosts.likes;
-    postContainer.append(postItem)
+    postItem.querySelector('.js-likes-counter').innerHTML = userClick;
     const likeButton = postItem.querySelector(".js-like-button")
+    
     likeButton.addEventListener('click' , function (){
-        
+        likeButton.setAttribute('data-postid' , socialPosts.id)
+        likeButton.className = ('like-button--liked')
+        userClick += 1;
+        console.log(userClick)
+        console.log(likeButton)
     })
-   
+    postContainer.append(postItem)
+    
+    
 }    
 
 
