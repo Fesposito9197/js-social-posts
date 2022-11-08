@@ -56,9 +56,10 @@ const posts = [
     }
 ];
 const postContainer = document.querySelector('.posts-list')
+let likedPost = []
 
 // ciclo sull'array di oggetti
-let userClick = 0
+
 for ( let i = 0; i < posts.length ; i++ ){
     // console.log(posts[i])
     const socialPosts = posts[i];
@@ -69,24 +70,21 @@ for ( let i = 0; i < posts.length ; i++ ){
     postItem.querySelector('.profile-pic').src = author.image;
     postItem.querySelector(".post-meta__time").innerHTML = socialPosts.created;
     postItem.getElementById('post__img').src = socialPosts.media;
-    postItem.querySelector('.js-likes-counter').innerHTML = userClick;
-    const likeButton = postItem.querySelector(".js-like-button")
+    postItem.querySelector('.js-likes-counter').innerHTML = socialPosts.likes;
+
+    const likeButton = postItem.querySelector(".js-like-button");
+    likeButton.setAttribute('data-postid' , socialPosts.id);
+    const likes = postItem.querySelector(".js-likes-counter");
     
     likeButton.addEventListener('click' , function (){
-        likeButton.setAttribute('data-postid' , socialPosts.id)
-        likeButton.className = ('like-button--liked')
-        userClick += 1;
-        console.log(userClick)
-        console.log(likeButton)
+        likeButton.classList.add("like-button--liked");
+        if(!likedPost.includes(socialPosts.id)){
+            likedPost.push(socialPosts.id)
+            console.log(likedPost)
+        }
+        socialPosts.likes = socialPosts.likes + 1;
+        likes.innerHTML = socialPosts.likes;
     })
+    
     postContainer.append(postItem)
-    
-    
-}    
-
-
-
-    
-
-    
-    
+}
