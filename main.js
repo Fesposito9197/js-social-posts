@@ -66,10 +66,11 @@ for ( let i = 0; i < posts.length ; i++ ){
     const {author} = socialPosts
     // creo un template nel mio html e lo salvo all'interno di una variabile
     const postItem = document.getElementById('post-template').content.cloneNode(true);
-    postItem.querySelector('.post-meta__author').innerHTML = author.name;
     postItem.querySelector('.profile-pic').src = author.image;
+    postItem.querySelector('.profile-pic').alt = author.name
+    postItem.querySelector('.post-meta__author').innerHTML = author.name;
     postItem.querySelector(".post-meta__time").innerHTML = socialPosts.created;
-    postItem.getElementById('post__img').src = socialPosts.media;
+    postItem.querySelector('.post__image img').src = socialPosts.media;
     postItem.querySelector('.js-likes-counter').innerHTML = socialPosts.likes;
 
     const likeButton = postItem.querySelector(".js-like-button");
