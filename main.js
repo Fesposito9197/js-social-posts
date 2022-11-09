@@ -77,18 +77,19 @@ for ( let i = 0; i < posts.length ; i++ ){
     const likeButton = postItem.querySelector(".js-like-button");
     likeButton.setAttribute('data-postid' , socialPosts.id);
     const likes = postItem.querySelector(".js-likes-counter");
-    
+    const index = likedPost.indexOf[socialPosts.id]
     likeButton.addEventListener('click' , function (){
         likeButton.classList.add("like-button--liked");
         likeButton.href="javascript:";
         if(!likedPost.includes(socialPosts.id)){
-            socialPosts.likes = socialPosts.likes + 1;
+            socialPosts.likes += 1;
             likes.innerHTML = socialPosts.likes;
             likedPost.push(socialPosts.id);
             console.log(likedPost)
         }else{
+            likedPost.splice(index)
             likeButton.classList.remove("like-button--liked")
-            socialPosts.likes = socialPosts.likes - 1;
+            socialPosts.likes -= 1 ;
             likes.innerHTML = socialPosts.likes;
         }
     })
