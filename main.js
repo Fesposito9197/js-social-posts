@@ -69,9 +69,10 @@ for ( let i = 0; i < posts.length ; i++ ){
     postItem.querySelector('.profile-pic').src = author.image;
     postItem.querySelector('.profile-pic').alt = author.name
     postItem.querySelector('.post-meta__author').innerHTML = author.name;
-    postItem.querySelector(".post-meta__time").innerHTML = socialPosts.created;
+    postItem.querySelector(".post-meta__time").innerHTML = new Date(socialPosts.created).toLocaleDateString();
     postItem.querySelector('.post__image img').src = socialPosts.media;
     postItem.querySelector('.js-likes-counter').innerHTML = socialPosts.likes;
+    postItem.getElementById('like-counter-1').id = `like-counter-${socialPosts.id}`
 
     const likeButton = postItem.querySelector(".js-like-button");
     likeButton.setAttribute('data-postid' , socialPosts.id);
@@ -83,9 +84,16 @@ for ( let i = 0; i < posts.length ; i++ ){
         if(!likedPost.includes(socialPosts.id)){
             likedPost.push(socialPosts.id)
             console.log(likedPost)
+        }else{
+            likeButton.classList.remove("like-button--liked")
         }
         socialPosts.likes = socialPosts.likes + 1;
         likes.innerHTML = socialPosts.likes;
     })
     postContainer.append(postItem)
 }
+            
+            
+            
+            
+            
