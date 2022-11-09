@@ -62,6 +62,8 @@ let likedPost = []
 
 for ( let i = 0; i < posts.length ; i++ ){
     // console.log(posts[i])
+    
+
     const socialPosts = posts[i];
     const {author} = socialPosts
     // creo un template nel mio html e lo salvo all'interno di una variabile
@@ -78,6 +80,7 @@ for ( let i = 0; i < posts.length ; i++ ){
     
     likeButton.addEventListener('click' , function (){
         likeButton.classList.add("like-button--liked");
+        likeButton.href="javascript:;"
         if(!likedPost.includes(socialPosts.id)){
             likedPost.push(socialPosts.id)
             console.log(likedPost)
