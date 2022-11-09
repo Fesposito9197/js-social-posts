@@ -82,18 +82,15 @@ for ( let i = 0; i < posts.length ; i++ ){
         likeButton.classList.add("like-button--liked");
         likeButton.href="javascript:;"
         if(!likedPost.includes(socialPosts.id)){
+            socialPosts.likes = socialPosts.likes + 1;
+            likes.innerHTML = socialPosts.likes;
             likedPost.push(socialPosts.id)
             console.log(likedPost)
         }else{
             likeButton.classList.remove("like-button--liked")
+            socialPosts.likes = socialPosts.likes - 1;
+            likes.innerHTML = socialPosts.likes;
         }
-        socialPosts.likes = socialPosts.likes + 1;
-        likes.innerHTML = socialPosts.likes;
     })
     postContainer.append(postItem)
-}
-            
-            
-            
-            
-            
+}        
